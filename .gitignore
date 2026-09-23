@@ -1,0 +1,8 @@
+# 凭据与运行数据（切勿提交）
+wb_refresh_tokens.json
+WORKBUDDY_ACCESS_TOKEN.txt
+wb_login_result.json
+*.log
+__pycache__/
+*.pyc
+.env
