@@ -2,6 +2,8 @@
 wb_refresh_tokens.json
 WORKBUDDY_ACCESS_TOKEN.txt
 wb_login_result.json
+wb_intl_login_result.json
+wb_intl_tokens.json
 *.log
 __pycache__/
 *.pyc

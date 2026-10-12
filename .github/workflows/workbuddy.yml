@@ -18,7 +18,7 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 45   # mp 对话任务按真人节奏上报（每条 45s±10s），账号多时耗时更长
     env:
       TZ: Asia/Shanghai   # runner 默认 UTC：不加会把日志时间与补签日期算错一天
     steps:
@@ -37,6 +37,13 @@ jobs:
         env:
           WORKBUDDY_REFRESH_TOKEN: ${{ secrets.WORKBUDDY_REFRESH_TOKEN }}
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
+          BARK_URL: ${{ secrets.BARK_URL }}
+          WECOM_WEBHOOK: ${{ secrets.WECOM_WEBHOOK }}
+          DINGTALK_WEBHOOK: ${{ secrets.DINGTALK_WEBHOOK }}
+          DINGTALK_SECRET: ${{ secrets.DINGTALK_SECRET }}
+          WORKBUDDY_TASKS: ${{ secrets.WORKBUDDY_TASKS }}
+          WORKBUDDY_SKIP_TASKS: ${{ secrets.WORKBUDDY_SKIP_TASKS }}
+          WORKBUDDY_MP_GAP: ${{ secrets.WORKBUDDY_MP_GAP }}
         run: python workbuddy_daily.py
 
       # ⚠️ 仅在【私有仓库】中持久化令牌状态；公开仓库会跳过，避免 RT 泄露
